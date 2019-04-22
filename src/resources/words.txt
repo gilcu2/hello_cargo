@@ -1,0 +1,2 @@
+Rust is a beautiful language.
+Beginning with rust is not easy.
