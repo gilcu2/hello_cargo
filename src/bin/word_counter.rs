@@ -20,20 +20,22 @@ impl WordStore {
         let key = word.to_string();
         let count = self.counts.entry(key).or_insert(0);
         *count += 1;
-//        self.counts.entry(key).or_insert(*count);
     }
 
-    fn display(&self) {
+    fn display(&self, min_frequency: u64) {
         for (key, value) in self.counts.iter() {
-            println!("{}: {}", key, value);
+            if value >= &min_frequency {
+                println!("{}: {}", key, value);
+            }
         }
     }
 }
 
 fn main() {
     let arguments: Vec<String> = env::args().collect();
-    println!("args 1 {}", arguments[1]);
+    println!("args {:?}", arguments);
     let filename = arguments[1].clone();
+    let min_frequency: u64 = arguments[2].parse().unwrap();
 
     let file = File::open(filename).expect("Could not open file");
     let reader = BufReader::new(file);
@@ -47,10 +49,11 @@ fn main() {
             if word == "" {
                 continue;
             } else {
-                word_store.increment(word);
+                let normalized_word = word.to_lowercase();
+                word_store.increment(&normalized_word);
             }
         }
     }
 
-    word_store.display();
+    word_store.display(min_frequency);
 }
