@@ -26,6 +26,46 @@ impl fmt::Display for Point2D {
     }
 }
 
+// Define a structure where the fields are nameable for comparison.
+#[derive(Debug)]
+struct Complex {
+    real: f64,
+    imaginary: f64,
+}
+
+// Similarly, implement for Point2D
+impl fmt::Display for Complex {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Customize so only `x` and `y` are denoted.
+        write!(f, "real: {}, imaginary: {}", self.real, self.imaginary)
+    }
+}
+
+// Define a structure named `List` containing a `Vec`.
+struct List(Vec<i32>);
+
+impl fmt::Display for List {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Extract the value using tuple indexing
+        // and create a reference to `vec`.
+        let vec = &self.0;
+
+        write!(f, "[")?;
+
+        // Iterate over `vec` in `v` while enumerating the iteration
+        // count in `count`.
+        for (count, v) in vec.iter().enumerate() {
+            // For every element except the first, add a comma.
+            // Use the ? operator, or try!, to return on errors.
+            if count != 0 { write!(f, ", ")?; }
+            write!(f, "{}", v)?;
+        }
+
+        // Close the opened bracket and return a fmt::Result value
+        write!(f, "]")
+    }
+}
+
 
 fn main() {
     // In general, the `{}` will be automatically replaced with any
@@ -91,4 +131,10 @@ fn main() {
     println!("Compare points:");
     println!("Display: {}", point);
     println!("Debug: {:?}", point);
+
+    let complex = Complex { real: 3.3, imaginary: 7.2 };
+
+    println!("Compare complexs:");
+    println!("Display: {}", complex);
+    println!("Debug: {:?}", complex);
 }
