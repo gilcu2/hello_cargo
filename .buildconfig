@@ -1,0 +1,10 @@
+[default]
+name=Default
+runtime=host
+toolchain=default
+config-opts=
+run-opts=
+prefix=/home/gilcu2/.cache/gnome-builder/install/hello_cargo/host
+app-id=
+postbuild=
+prebuild=
