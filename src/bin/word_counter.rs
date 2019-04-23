@@ -3,6 +3,10 @@ use std::fs::File;
 use std::io::prelude::BufRead;
 use std::io::BufReader;
 use std::collections::HashMap;
+use regex::Regex;
+use std::collections::BTreeMap;
+
+extern crate regex;
 
 #[derive(Debug)]
 struct WordStore {
@@ -10,6 +14,7 @@ struct WordStore {
 }
 
 impl WordStore {
+
     fn new() -> WordStore {
         WordStore {
             counts: HashMap::new()
@@ -23,12 +28,23 @@ impl WordStore {
     }
 
     fn display(&self, min_frequency: u64) {
-        for (key, value) in self.counts.iter() {
-            if value >= &min_frequency {
-                println!("{}: {}", key, value);
-            }
+        let ordered: BTreeMap<_, _> = self.counts.iter()
+            .filter(|pair| pair.1 >= &min_frequency)
+            .collect();
+
+        for (word, count) in ordered {
+            println!("{}: {}", word, count);
         }
     }
+}
+
+fn normalize_word(word: &str) -> String {
+    let separators_re = Regex::new(r"[ ,.!?]+").unwrap();
+    let invalid_chars_re = Regex::new(r"[^a-z ]").unwrap();
+
+    let lower = word.to_lowercase();
+    let separators_replaced = separators_re.replace_all(&lower, " ");
+    invalid_chars_re.replace_all(&separators_replaced, "").to_string()
 }
 
 fn main() {
@@ -49,7 +65,7 @@ fn main() {
             if word == "" {
                 continue;
             } else {
-                let normalized_word = word.to_lowercase();
+                let normalized_word = normalize_word(word);
                 word_store.increment(&normalized_word);
             }
         }
