@@ -2,9 +2,18 @@ fn print_string(s: &str) {
     println!("&str: {}", s)
 }
 
-fn main() {
-    let str = "Hello, world!";
-    let str = "Hello, world!";
+fn print_second_word(s: &str) {
+    let second_word = s.split(" ")
+        .collect::<Vec<&str>>()[1];
 
-    print_string(str)
+    println!("second: {}", second_word)
+}
+
+fn main() {
+    let str = "Hello, world &str!";
+    let string = String::from("Hello, world String!");
+
+    print_string(str);
+    print_string(&string);
+    print_second_word(str)
 }
