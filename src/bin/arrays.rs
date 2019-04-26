@@ -1,11 +1,15 @@
+extern crate num;
+
 use std::fmt::Debug;
+use std::ops::Add;
+use std::num::Zero;
 
 fn print_slice<T: Debug>(slice: &[T]) {
     println!("{:?}", slice);
 }
 
-fn sum(slice: &[u8]) -> u8 {
-    let mut sum = 0;
+fn sum<T: Zero + Add<T, Output=T>>(slice: &[T]) -> T {
+    let mut sum = T::Zero;
     for i in slice {
         sum += i
     }
