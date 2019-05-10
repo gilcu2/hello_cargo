@@ -9,4 +9,5 @@ regex = "1"
 num = "*"
 actix = "0.7"
 futures = "0.1"
+rand = "0.3.14"
 
