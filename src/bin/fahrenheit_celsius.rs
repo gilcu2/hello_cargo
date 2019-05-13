@@ -11,10 +11,12 @@ fn main() {
     let mut temperature = String::new();
     io::stdin().read_line(&mut temperature).expect("Failed to read temperature");
 
-    let value = &temperature[0..temperature.len() - 2];
-    let unit = &temperature[temperature.len() - 2..];
+    let temperature = temperature.trim();
 
-    println!("value: {} unit: {}", value, unit);
+    let value = &temperature[0..temperature.len() - 1];
+    let unit = &temperature[temperature.len() - 1..];
+
+    println!("value: '{}' unit: '{}'", value, unit);
 
     let value: i32 = value.parse().expect("temperature must be a number");
 
