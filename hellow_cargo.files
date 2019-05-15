@@ -1,0 +1,17 @@
+Cargo.lock
+Cargo.toml
+README.md
+src/bin/arrays.rs
+src/bin/errorManaging.rs
+src/bin/figures.rs
+src/bin/fmt.rs
+src/bin/generics.rs
+src/bin/hello.rs
+src/bin/local_actors.rs
+src/bin/memory_usage.rs
+src/bin/string_conversions.rs
+src/bin/strings.rs
+src/bin/sum.rs
+src/bin/word_counter.rs
+src/resources/words.txt
+tests/sum.rs
