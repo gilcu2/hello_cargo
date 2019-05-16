@@ -10,5 +10,10 @@ num = "*"
 actix = "0.7"
 futures = "0.1"
 rand = "0.3.14"
-#sum = { path = "sum" }
 
+#[[test]]
+#name = "cucumber"
+#harness = false # Allows Cucumber to print output instead of libtest
+#
+#[dev-dependencies]
+#cucumber_rust = "^0.5.1"
