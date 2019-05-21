@@ -14,9 +14,4 @@ rand = "0.3.14"
 [dev_dependencies]
 rspec = "1.0.0-beta.4"
 
-#[[test]]
-#name = "cucumber"
-#harness = false # Allows Cucumber to print output instead of libtest
-#
-#[dev-dependencies]
-#cucumber_rust = "^0.5.1"
+

@@ -14,7 +14,6 @@ pub fn main() {
     runner.run(
         &rspec::given("an value of ten", 10, |ctx| {
             ctx.when("adding 5 to it", |ctx| {
-                ctx.before(|value| { *value + 5 });
 
                 ctx.then("results in fifteen", |num| {
                     assert_eq!(*num, 15);
