@@ -3,7 +3,7 @@ use rustlearn::linear_models::sgdclassifier::Hyperparameters;
 use rustlearn::datasets::iris;
 
 fn main() {
-    let (X, y) = iris::load_data();
+    let (x, y) = iris::load_data();
 
     let mut model = Hyperparameters::new(4)
         .learning_rate(1.0)
@@ -11,9 +11,9 @@ fn main() {
         .l1_penalty(0.0)
         .one_vs_rest();
 
-    model.fit(&X, &y).unwrap();
+    model.fit(&x, &y).unwrap();
 
-    let prediction = model.predict(&X).unwrap();
+    let prediction = model.predict(&x).unwrap();
 
 //    println!("Model: {:?}", model);
     println!("Prediction: {:?}", prediction);

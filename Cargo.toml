@@ -14,5 +14,6 @@ rustlearn = "0.5.0"
 
 [dev_dependencies]
 rspec = "1.0.0-beta.4"
+optimization = "*"
 
 
