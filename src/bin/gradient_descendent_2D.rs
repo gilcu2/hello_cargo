@@ -15,7 +15,13 @@ impl Optimizable for XSqModel2D {
     type Targets = Matrix<f64>;
 
     fn compute_grad(&self, params: &[(f64, f64)], _: &Matrix<f64>, _: &Matrix<f64>) -> (f64, Vec<f64>) {
-        let value = (params[0] - self.c) * (params[0] - self.c);
+        let x_dif = params[0].1 - self.c.1;
+        let y_dif = params[0].2 - self.c.2;
+
+        let x_dif2 = x_dif * x_dif;
+        let y_dif2 = y_dif * y_dif;
+
+        let value = () * (params[0] - self.c);
         let first_derivate = vec![2.0 * (params[0] - self.c)];
         (value, first_derivate)
     }

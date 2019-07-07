@@ -1,6 +1,6 @@
 extern crate optimization;
 
-use optimmization::{Minimizer, GradientDescent, NumericalDifferentiation, Func};
+use optimization::{Minimizer, GradientDescent, NumericalDifferentiation, Func};
 
 fn main() {
     let function = NumericalDifferentiation::new(Func(|x: &[f64]| {

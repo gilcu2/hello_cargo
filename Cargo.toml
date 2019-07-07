@@ -11,8 +11,9 @@ actix = "0.7"
 futures = "0.1"
 rand = "0.3.14"
 rustlearn = "0.5.0"
-optimization = "*"
+optimization = "0.1.0"
 rusty-machine="0.5.4"
+vectors = "0.3.0"
 
 [dev_dependencies]
 rspec = "1.0.0-beta.4"
